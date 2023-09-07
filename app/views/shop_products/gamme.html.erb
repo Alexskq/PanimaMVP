@@ -1,0 +1,141 @@
+
+<% content_for :meta_title, "Panima - Gestion de gamme" %>
+
+<div class="gamme container mt-3" data-controller="auto-manuel">
+  <div class="header-gamme">
+    <h2>Gestion de gamme</h2>
+    <div class="header-gamme-right">
+
+    <%= link_to "Actualiser", trier_path, class: "btn-actualiser"%>
+
+    <div class="btn-toggle" >
+      <div class="switch-button">
+        <input class="switch-button-checkbox" type="checkbox"  data-auto-manuel-target="button" data-action="click->auto-manuel#removeelement">
+        <label class="switch-button-label" for=""><span class="switch-button-label-span">Auto</span></label>
+      </div>
+
+    </div>
+    </div>
+  </div>
+
+  <p class="gamme-etat">
+      <% if @actualised_time == nil %>
+        <p>Pas d'actualisation récente</p>
+      <% else %>
+        Actualisé le : <%= @actualised_time.update_ate.day %>/0<%= @actualised_time.update_ate.month %>/<%= @actualised_time.update_ate.year %> à <%= @actualised_time.update_ate.hour %>:<%= @actualised_time.update_ate.strftime("%M") %>
+      <% end %>
+   </p>
+
+
+
+
+
+
+<%# produits a remplacer %>
+
+  <div class="main-gamme">
+    <div class="gamme-actuelle">
+    <div class="sticky-manual-gamme">
+      <h2 id="h2-gamme">Produits à enlever</h2>
+      <div class="description-gamme-produits">
+        <div id="dsc-produit"><p>Produit</p></div>
+        <div id="dsc-produit"><p>Ref.</p></div>
+        <div id="dsc-produit"><p>Note</p></div>
+        <div id="dsc-produit" data-auto-manuel-target="remove4"><i class="fa-solid fa-lock"></i></div>
+        <div id="dsc-produit" ><p>Catégorie</p></div>
+        <div id="dsc-produit" data-auto-manuel-target="remove" class="d-none"><p>Modifier</p></div>
+      </div>
+  </div>
+        <% @shop_products_remove.each do |shop_product| %>
+          <div class="produits-gamme">
+                <div id="dsc-produit"><%= shop_product.product.name %></div>
+                <div id="dsc-produit"><%= shop_product.product.ean %></div>
+                <div id="dsc-produit"><%= shop_product.rating %></div>
+                <div id="dsc-produit" data-auto-manuel-target="remove5">
+                  <% if shop_product.permanent %>
+                    <p>x</p>
+                    <% else %>
+                    <p>-</p>
+                  <% end %>
+                </div>
+                <div id="dsc-produit"><%= shop_product.product.category %></div>
+                <div id="dsc-produit" data-auto-manuel-target="remove2" class="d-none">
+                  <i class="fa-solid fa-pen" data-bs-toggle="modal" data-bs-target="#product<%= shop_product.id %>"></i>
+                  <i class="fa-solid fa-trash"></i>
+                </div>
+          </div>
+          <%= render "shared/modal_gamme",  shop_product: shop_product%>
+        <% end %>
+    </div>
+
+<%# produits remplaçants %>
+
+    <div class="nouvelle-gamme">
+       <div class="sticky-manual-gamme">
+       <h2 id="h2-gamme">Produits remplaçants</h2>
+      <div class="description-gamme-produits">
+        <div id="dsc-produit"><p>Produit</p></div>
+        <div id="dsc-produit"><p>Ref.</p></div>
+        <div id="dsc-produit"><p>Note</p></div>
+        <div id="dsc-produit"><i class="fa-solid fa-lock"></i></div>
+        <div id="dsc-produit"><p>Catégorie</p></div>
+      </div>
+</div>
+        <% @shop_products_replace.each do |shop_product| %>
+          <div class="produits-gamme">
+            <div id="dsc-produit"><%= shop_product.product.name %></div>
+            <div id="dsc-produit"><%= shop_product.product.ean %></div>
+            <div id="dsc-produit"><%= shop_product.rating %></div>
+            <div id="dsc-produit">
+             <% if shop_product.permanent? %>
+               <p>x</p>
+              <% else %>
+               <p>-</p>
+             <% end %>
+            </div>
+            <div id="dsc-produit"><%= shop_product.product.category %></div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+
+
+<%# gamme actuelle class D-NONE %>
+
+  <div class="manual-shopproducts-list d-none" data-auto-manuel-target="remove3" >
+    <div class="sticky-manual-gamme">
+      <h2 id="h2-gamme">Gamme actuelle</h2>
+        <div class="description-gamme-produits">
+          <div id="dsc-produit"><p>Produit</p></div>
+          <div id="dsc-produit"><p>Ref.</p></div>
+          <div id="dsc-produit"><p>Note</p></div>
+          <div id="dsc-produit"><i class="fa-solid fa-lock"></i></div>
+          <div id="dsc-produit"><p>Catégorie</p></div>
+          <div id="dsc-produit"><p>Modifier</p></div>
+        </div>
+    </div>
+    <% @shop_product_gamme.each do |shop_product| %>
+      <div class="produits-gamme">
+            <div id="dsc-produit"><%= shop_product.product.name %></div>
+            <div id="dsc-produit"><%= shop_product.product.ean %></div>
+            <div id="dsc-produit"><%= shop_product.rating %></div>
+            <div id="dsc-produit">
+             <% if shop_product.permanent %>
+               <p>x</p>
+              <% else %>
+               <p>-</p>
+             <% end %>
+            </div>
+            <div id="dsc-produit"><%= shop_product.product.category %></div>
+            <div id="dsc-produit">
+              <i class="fa-solid fa-pen" data-bs-toggle="modal" data-bs-target="#product<%= shop_product.id %>"></i>
+              <i class="fa-solid fa-trash"></i>
+            </div>
+      </div>
+
+      <%# modal %>
+      <%= render "shared/modal_gamme",  shop_product: shop_product%>
+    <% end %>
+  </div>
+
+</div>

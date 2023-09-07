@@ -1,0 +1,174 @@
+.inventaire {
+  height: 510px;
+  margin: 12px;
+  margin-top: 0px !important;
+  background-color: white;
+  padding: 0px;
+  border-radius: 30px;
+  width: 103%;
+  overflow: scroll;
+}
+
+.title-inventaire-trier {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title-inventaire-trier a:hover{
+  background-color: transparent;
+  border: 1px solid $blue-king_20;
+}
+
+.h2-inventaire {
+  display: flex;
+  justify-content: center;
+  margin-left: 35px;
+  margin-top: 35px;
+  margin-bottom: 25px;
+}
+
+.title-inventaire {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.title-inv {
+  color: $blue_marine;
+  width: 100px;
+  margin: 5px;
+}
+
+.produits-inventaire {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.produits-inventaire:hover {
+  background-color: $light-green-10;
+  color: grey;
+}
+
+.produit-inv {
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 5px;
+  color: $light_grey;
+  padding-bottom: 16px;
+}
+
+.title-inventaire-trier a {
+  padding: 8px;
+  background-color: $blue-king_20;
+  border-radius: 30px;
+  width: 160px;
+  height: 40px;
+  color: $blue_marine;
+  text-align: center;
+  text-decoration: none;
+  margin-right: 30px;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  background-color: $white;
+}
+/*********** MODAL ********************/
+
+.fondmodal {
+  border-radius: 30px;
+  border: solid 1px transparent;
+}
+
+.soustitlemodal {
+  color: $blue_marine;
+  margin-bottom: 10px;
+  font-size: 20px;
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+.soussoustitlemodal {
+  margin-left: 30px;
+  color: $blue-marine;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.infosmodal {
+  margin-left: -4px;
+  margin-bottom: 7px;
+  margin-top: 2px;
+  font-size: 15px;
+  color: $blue-marine;
+}
+
+.infosmodaldescription {
+  margin-left: 30px;
+  margin-bottom: 25px;
+  margin-top: 3px;
+  font-size: 15px;
+  color: $blue-marine;
+  margin-right: 30px;
+}
+
+.permanent {
+  padding-left: 60px;
+  padding-bottom: 5px;
+  margin-top: 21px;
+  padding-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  .form-check-input {
+    height: 1em;
+}
+}
+
+.bodymodal {
+  padding: 0px;
+}
+
+.display {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  text-align: center;
+  padding-top: 33px;
+}
+
+.permanent {
+  color: $blue-marine;
+}
+
+.modal-body {
+  height: 470px;
+  overflow: scroll;
+}
+
+.fondbleu {
+  text-align: justify;
+  border-radius: 30px;
+  height: auto;
+  width: auto;
+  border: 2px solid #97e4de7b;
+  padding: 20px;
+  margin-left: 16px;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.btn-valid {
+  padding: 8px;
+    background-color:$light-green-50;
+    border-radius: 30px;
+    width: 180px;
+    height: 46px;
+    color: #373456;
+    text-decoration: none;
+    border: none;
+}

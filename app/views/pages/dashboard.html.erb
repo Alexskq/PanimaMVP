@@ -1,0 +1,88 @@
+
+ <div class="container container-dashboards">
+
+  <div class = "d-flex">
+
+<div class="container container-dashboards">
+ <% content_for :meta_title, "Panima - Dashboard" %>
+  <div class = "d-flex container-cards">
+                    <%#  VENTES MENSUELLES%>
+    <div class="card-violet" bis_skin_checked="1">
+      <div class="d-flex" bis_skin_checked="1">
+        <h6><%= @monthly_sales_sum.round%></h6>
+        <h5 class="itemcard">€</h5>
+      </div>
+      <div class="card-violet-title" bis_skin_checked="1">
+        <div bis_skin_checked="1">
+          <p>Ventes mensuelles</p>
+        </div>
+      </div>
+    </div>
+
+                    <%#  ACHATS MENSUELLES%>
+
+    <div class="card-violet" bis_skin_checked="1">
+      <div class="d-flex" bis_skin_checked="1">
+        <h6><%= @monthly_purchases_sum.round%></h6>
+        <h5 class="itemcard">€</h5>
+      </div>
+      <div class="card-violet-title " bis_skin_checked="1">
+        <div bis_skin_checked="1">
+          <p>Achats mensuels</p>
+        </div>
+      </div>
+    </div>
+
+              <%# COUT DES BIENS VENDUS %>
+
+    <div class="card-violet" bis_skin_checked="1">
+      <div class="d-flex" bis_skin_checked="1">
+        <h6><%=@graph_cogs.sum.round%></h6>
+        <h5 class="itemcard">€</h5>
+      </div>
+      <div class="card-violet-title " bis_skin_checked="1">
+        <div bis_skin_checked="1">
+          <p>Coût ventes</p>
+        </div>
+      </div>
+    </div>
+
+                    <%# PROFIT  %>
+    <div class="card-violet" bis_skin_checked="1">
+      <div class="d-flex" bis_skin_checked="1">
+        <h6><%=@graph_profit.sum.round%></h6>
+        <h5 class="itemcard">€</h5>
+      </div>
+      <div class="card-violet-title " bis_skin_checked="1">
+        <div bis_skin_checked="1">
+          <p>Profit</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+                        <%# GRAPHS %>
+
+
+    <div class="dashboardd">
+    <%# GRAPHS %>
+    <h2 class="h2-inventaire">Mes statistiques</h2>
+    <div class ="graph-elements"
+      data-controller="chart"
+      data-chart-sales-value="<%=@graph_sales%>" data-chart-cogs-value="<%=@graph_cogs%>" data-chart-profit-value="<%=@graph_profit%>" data-chart-categories-value="<%=@categories.to_json%> ">
+
+      <div class = "d-flex justify-content-around mt-2 chart-buttons">
+        <button type="button" data-chart-target="salesprofit" data-action="click->chart#choice" class="btn-chart"><p>Ventes & profit</p></button>
+        <button type="button" data-chart-target="cogs" data-action="click->chart#choice" class="btn-chart"><p>Coût marchandises</p></button>
+        <button type="button" data-chart-target="categories" data-action="click->chart#choice" class="btn-chart"><p>Ventes par catégorie</p></button>
+
+      </div>
+      <div class="chart-wrapper">
+
+      <canvas data-chart-target="myChart" class= "mt-2"></canvas>
+      </div>
+
+
+    </div>
+  </div>
+</div>

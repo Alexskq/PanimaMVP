@@ -1,0 +1,2 @@
+class Actualised < ApplicationRecord
+end

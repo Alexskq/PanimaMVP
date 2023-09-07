@@ -1,0 +1,8 @@
+
+<% @products.each do |product| %>
+                <div class="produits-gamme" data-action="click->replace-shop-product#choice" data-replace-shop-product-target="product" data-price="<%=product.buy_price%>" data-id= "<%=product.id%>">
+                    <div id="dsc-produit"><%= product.name %></div>
+                    <div id="dsc-produit"><%= product.ean %></div>
+                    <div id="dsc-produit"><%= product.category %></div>
+                </div>
+ <% end %>

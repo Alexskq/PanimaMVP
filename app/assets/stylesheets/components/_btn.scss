@@ -1,0 +1,18 @@
+
+.btn-us{
+
+  padding: 8px;
+  background-color: $blue-king_20;
+  border-radius: 30px;
+  width: 228px;
+  height: 46px;
+  color: $blue_marine;
+  text-decoration: none;
+  border: none;
+
+}
+
+.btn-us:hover{
+  background-color: transparent;
+  border: 1px solid $blue-king_20;
+}

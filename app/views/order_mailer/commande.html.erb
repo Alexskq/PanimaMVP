@@ -1,0 +1,41 @@
+<head>
+<link rel="stylesheet" href="pdf.scss">
+
+</head>
+<h1>Commande du <%= Time.now.strftime('%m/%d/%Y') %></h1>
+
+
+
+ <h4>Bonjour, voici la prochaine commande du <%= Time.now.strftime('%m/%d/%Y')%> </h4>
+   <div >
+    <ul>
+      <% @order.order_products.each do |order_product| %>
+
+      <li class="list"><strong>Produit:</strong>  <%= order_product.product.name %>  </li>
+      <li class="list"><strong>Référence:</strong>  <%= order_product.product.ean %>  </li>
+      <li class="list"><strong>Rayon:</strong>  <%= order_product.product.category %>  </li>
+      <li class="list"><strong>Rack:</strong>  <%= order_product.rack %>  </li>
+      <li class="list"><strong>Quantité:</strong>  <%= order_product.quantity_product%>  </li>
+<br>
+      <% end %>
+    </ul>
+ </div>
+
+
+<%# <style>
+strong{
+  font-style:italic;
+}
+.list{
+    display: inline;
+  }
+</style> %>
+
+
+
+
+
+<%# TODO : Récupérer le rack et le status permanent %>
+<%# TODO : en faire un PDF %>
+
+<%# * https://berislavbabic.com/send-pdf-attachments-from-rails-with-wickedpdf-and-actionmailer/ %>

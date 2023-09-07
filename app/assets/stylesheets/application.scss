@@ -1,0 +1,70 @@
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+@import "config/bootstrap_variables";
+
+// External libraries
+@import "bootstrap/scss/bootstrap";
+@import "font-awesome";
+
+// Your CSS partials
+@import "components/index";
+@import "pages/index";
+
+
+
+// * Syntaxe pour la font : font-family: 'Inter', sans-serif;
+
+h2 {
+  color: $blue_marine;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0px;
+}
+
+p {
+  margin: 0px;
+}
+
+.row {
+  max-width: 100vw;
+  --bs-gutter-x: auto !important;
+}
+
+.col-3 {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+// @media (prefers-color-scheme: dark) {
+.dark {
+  background-color: rgb(16, 16, 17);
+  filter: invert(1) hue-rotate(.5turn);
+
+    img {
+      filter: invert(1) hue-rotate(.5turn);
+    }
+
+    img:not(:hover) {
+      opacity: .7;
+      transition: opacity .25s ease-in-out;
+    }
+  }
+  // }
+
+
+  // @media only screen and (min-width: 1450px)  {
+  //   .navbar-lewagon {
+  //     width: 119%;
+  //   }
+  //   .form-switch .form-check-input {
+  //     margin-left: 94.5em;
+  //   }
+  //   #query {
+  //     width: 1000px;
+  //   }
+  // }
+.favicon {
+
+  border-radius: 30px;
+}

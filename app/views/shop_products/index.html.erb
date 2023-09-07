@@ -1,0 +1,132 @@
+
+<% content_for :meta_title, "Panima - Inventaire" %>
+
+
+<div class="grid-card-5">
+
+  <div class="card-violet">
+    <div class="d-flex">
+      <h6><%=@valeur%></h6>
+      <h5 class="itemcard">€</h5>
+    </div>
+    <div class="card-violet-title">
+      <div>
+        <p>Valeur du stock</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-violet">
+    <div class="d-flex">
+      <h6><%=@nbref%></h6>
+      <h5 class="itemcard">références</h5>
+    </div>
+    <div class="card-violet-title">
+      <div>
+        <p>Total références</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-violet">
+    <div class="d-flex">
+      <h6><%=@margin%></h6>
+      <h5 class="itemcard">€</h5>
+    </div>
+    <div class="card-violet-title">
+      <div>
+        <p>Marge</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-violet">
+    <div class="d-flex">
+      <h6><%=@total%></h6>
+      <h5 class="itemcard">produits</h5>
+    </div>
+    <div class="card-violet-title">
+      <div>
+        <p>Stock total</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-violet">
+    <div class="d-flex">
+      <h6><%=@count%></h6>
+      <h5 class="itemcard">produits</h5>
+    </div>
+    <div class="card-violet-title">
+      <div>
+        <p>Plus en stock</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="inventaire">
+  <div class="sticky">
+    <div class="title-inventaire-trier">
+      <h2 class="h2-inventaire">Inventaire</h2>
+      <%= link_to "Trier", params[:order_by] == "DESC" ? shop_products_path(order_by: "ASC") : shop_products_path(order_by: "DESC"), class: "btn-trier", data:{controller: "sort"}%>
+    </div>
+    <div class="title-inventaire">
+      <div class="title-inv"><p>Produit</p></div>
+      <div class="title-inv"><p>Référence</p></div>
+      <div class="title-inv"><p>Rayon</p></div>
+      <div class="title-inv"><p>N° rack</p></div>
+      <div class="title-inv"><i class="fa-solid fa-lock"></i></div>
+      <div class="title-inv"><p>Quantité</p></div>
+    </div>
+  </div>
+
+  <% @shop_products.each do |shop_product| %>
+    <div class="produits-inventaire" data-bs-toggle="modal" data-bs-target="#product<%=shop_product.product.id%>">
+        <div class="produit-inv"><%= shop_product.product.name %></div>
+        <div class="produit-inv"><%= shop_product.product.ean %></div>
+        <div class="produit-inv"><%= shop_product.product.category %></div>
+        <div class="produit-inv"><%= shop_product.rack %></div>
+        <div class="produit-inv"><% if shop_product.permanent %>
+                  <p>x</p>
+                  <% else %>
+                  <p>-</p>
+                <% end %></div>
+        <div class="produit-inv"><%= shop_product.stock %></div>
+    </div>
+
+    <div class="modal fade" id="product<%=shop_product.product.id%>" tabindex="-1" aria-labelledby="product<%=shop_product.product.id%>Label" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content fondmodal">
+          <div class="modal-header">
+            <h2 id="product<%=shop_product.product.id%>Label"><%= shop_product.product.name %></h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body bodymodal">
+              <div class="display">
+                <p class="soussoustitlemodal">Stock :</p> <div class="infosmodal"><%= shop_product.stock %></div>
+                <p class="soussoustitlemodal">Rayon :</p> <div class="infosmodal"><%= shop_product.product.category %></div>
+                <p class="soussoustitlemodal">N° rack :</p> <div class="infosmodal"><%= shop_product.rack %></div>
+                <p class="soussoustitlemodal">EAN :</p> <div class="infosmodal"><%= shop_product.product.ean %></div>
+              </div>
+            <div class="fondbleu">
+              <p class="soustitlemodal">Description :</p>
+              <p class="infosmodaldescription"><%= shop_product.product.description %></p>
+            </div>
+
+            <div class="permanent">
+            <%# form update shop-product %>
+                <%= simple_form_for(shop_product) do |f| %>
+                  <%= f.input :permanent, label: "Passer le produit en gamme permanente", class: "permanent"%>
+                  <%= f.submit value: "Valider", class: "btn-valid"%>
+                <% end %>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn-us" data-bs-dismiss="modal">Retour</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

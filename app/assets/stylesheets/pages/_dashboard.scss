@@ -1,0 +1,62 @@
+.btn-chart{
+  margin-top: 0px;
+  padding: 8px;
+  background-color: $blue-king_20;
+  border-radius: 30px;
+  width: 200px;
+  height: 46px;
+  color: $blue_marine;
+  text-decoration: none;
+  border: none;
+  align-items: center;
+  margin-left: 25px;
+}
+.btn-chart:hover{
+  background-color: transparent;
+  border: 1px solid $blue-king_20;
+}
+
+
+.chart-wrapper {
+  display: flex;
+  justify-content: center;
+  height: 400px;
+  width: 100%;
+}
+
+.graph-elements{
+  display: flex;
+}
+
+.chart-buttons{
+  display: flex;
+  flex-direction: column;
+}
+/*********** dashboard ********************/
+
+.mt-2 {
+  margin-top: -0px !important;
+
+}
+
+.dashboardd {
+  height: 510px;
+  margin: 12px;
+  margin-top: 0px !important;
+  background-color: white;
+  padding: 0px;
+  border-radius: 30px;
+  width: 103%;
+  overflow: scroll;
+}
+
+.toggle{
+  background-color: $light-green;
+}
+
+.container-dashboards{
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+}

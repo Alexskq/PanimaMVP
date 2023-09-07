@@ -1,0 +1,128 @@
+
+<% content_for :meta_title, "Panima - Commandes" %>
+
+
+<%# * CARD RESUME %>
+
+<div class="grid-card-4">
+  <div class="card-violet">
+    <div class="d-flex">
+      <h6><%= @orders.first.total_price.to_i * 20%></h6>
+      <h5 class="itemcard">€</h5>
+    </div>
+    <div class="card-violet-title">
+      <div>
+        <p>Commande</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-violet">
+    <div class="d-flex">
+      <h6><%= @orders.first.quantity%></h6>
+      <h5 class="itemcard">produits</h5>
+    </div>
+    <div class="card-violet-title">
+      <div>
+        <p>Quantité</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-violet">
+    <div class="d-flex">
+      <h6><%= Time.now.strftime("%I:%M%p")%></h6>
+
+    </div>
+    <div class="card-violet-title-status">
+        <p>Livraison</p>
+    </div>
+  </div>
+
+  <div class="card-violet">
+    <div class="details-order">
+      <h6><%= @orders.last.status %></h6>
+    </div>
+    <div class="card-violet-title-status">
+        <p>Statut</p>
+    </div>
+  </div>
+
+</div>
+
+<%# * CARD INVENTAIRE %>
+<div class="card-order">
+  <div class="card-title">
+    <h2>Commande</h2>
+      <%= link_to "Trier", class: "order"  %>
+  </div>
+      <div class="card-details-title">
+
+        <div class="card-list">
+            <ul>
+              <li class="title">Réfence </li>
+            </ul>
+            <% @orders.each do |order|%>
+              <div class="card-details-info">
+                <ul>
+                  <li>#<%= link_to order.order_reference, order_path(order) %></li>
+                </ul>
+                <hr>
+              </div>
+            <% end %>
+        </div>
+        <div class="card-list">
+            <ul>
+              <li class="title">Valeur </li>
+            </ul>
+            <% @orders.each do |order|%>
+              <div class="card-details-info">
+                <ul>
+                  <li><%= order.total_price.to_i * 20%> €</li>
+                </ul>
+                <hr>
+              </div>
+            <% end %>
+        </div>
+        <div class="card-list">
+            <ul>
+              <li class="title">Quantité commandée</li>
+            </ul>
+            <% @orders.each do |order|%>
+              <div class="card-details-info">
+                <ul>
+                  <li><%= order.quantity%></li>
+                </ul>
+                <hr>
+              </div>
+            <% end %>
+        </div>
+        <div class="card-list">
+            <ul>
+              <li class="title">Réceptionnée le :</li>
+            </ul>
+            <% @orders.each do |order|%>
+              <div class="card-details-info">
+                <ul>
+                  <li><%= order.delivered_date.strftime('%-d %b. %y')%></li>
+                </ul>
+                <hr>
+              </div>
+            <% end %>
+        </div>
+        <div class="card-list">
+            <ul>
+              <li class="title">Statut</li>
+            </ul>
+            <% @orders.each do |order|%>
+              <div class="card-details-info">
+                <ul>
+                  <li><%= order.status%></li>
+                </ul>
+                <hr>
+              </div>
+            <% end %>
+        </div>
+      </div>
+
+</div>

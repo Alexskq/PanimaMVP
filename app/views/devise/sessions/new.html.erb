@@ -1,0 +1,47 @@
+
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+      <div class="glass-form">
+
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
+            <div class="form-inputs">
+              <h3>Se connecter</h3>
+              <%= f.input :email,
+                          required: false,
+                          autofocus: true,
+                          input_html: { autocomplete: "email" } %>
+              <%= f.input :password,
+                          label: "Mot de passe",
+                          required: false,
+                          input_html: { autocomplete: "current-password" } %>
+              <%= f.input :remember_me, label: "Se souvenir de moi", input_html: { width: "20px", border: "1px solid", position: "relative", top:"-3px"}, as: :boolean if devise_mapping.rememberable? %>
+
+
+        </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Connexion"%>
+            </div>
+
+            <div class="social">
+              <div class="go">
+              <%= render "devise/shared/links" %>
+              </div>
+            </div>
+          <% end %>
+    </div>
+
+
+
+
+
+          <%# <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div> %>
+     <%# <label for="username">Username</label>
+        <input type="text" placeholder="Email or Phone" id="username">
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password">
+
+        <button>Log In</button> %>

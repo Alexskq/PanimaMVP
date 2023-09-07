@@ -1,0 +1,68 @@
+.grid-card-5 {
+  display: grid;
+  grid-template-columns: 0fr 0fr 0fr 0fr 0fr;
+}
+.grid-card-4 {
+  display: grid;
+  grid-template-columns: 0fr 0fr 0fr 0fr;
+  margin-bottom: 12px;
+}
+
+.card-violet {
+  width: 190px;
+  height: 190px;
+  margin: 19px;
+  border: solid 3px $blue_king_50;
+  border-radius: 30px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.card-violet p {
+  margin-top: 3px;
+  color: $blue_marine;
+  padding-bottom: 23px;
+  margin-left: 10px;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.card-violet .itemcard {
+  font-size: 17px;
+  padding-top: 52px;
+  margin-left: 5px !important;
+  margin-top: 60px;
+  color: $blue_marine;
+  font-weight: 200;
+}
+
+.card-violet h6 {
+  font-size: 32px;
+  margin-left: 15px;
+  color: $blue_marine;
+  margin-top: 100px;
+  margin-bottom: -54px;
+}
+
+.card-violet .card-violet-title {
+  font-size: 5px;
+  background-color: $blue_king_50;
+  padding: 1px;
+  margin-top: -5px;
+}
+
+.card-violet:hover {
+  border: solid 3px $pink_50;
+  p { color: $pink;
+
+  }
+  .card-violet-title {
+    background-color: $pink_50;
+  }
+  h6 {
+    color: $pink;
+  }
+  .itemcard {
+    color: $pink;
+  }
+}

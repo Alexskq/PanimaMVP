@@ -1,0 +1,105 @@
+
+<% content_for :meta_title, "Panima - Commande #{@order.order_reference}" %>
+
+ <div class="card-content">
+    <div class="order-title">
+      <h2>Produit commandés</h2>
+      <div class="details-title">
+        <div class="donwload"><i class="fa-solid fa-download"></i> <%= link_to "Télécharger", pdf_path(@order), target: "_blank" %></div>
+      </div>
+    </div>
+    <div class="card-details-title">
+      <div class="card-list">
+        <ul class="sticky-top">
+          <li class="title">Nom du Produit</li>
+        </ul>
+          <% @order_products.each do |order_product|%>
+          <div class="card-details-info">
+            <ul>
+              <li><%= order_product.product.name%></li>
+            </ul>
+          </div>
+            <% end %>
+      </div>
+
+      <div class="card-list">
+        <ul class="sticky-top">
+          <li class="title">Référence</li>
+        </ul>
+          <% @order_products.each do |order_product|%>
+          <div class="card-details-info">
+            <ul>
+              <li><%= order_product.product.ean%></li>
+            </ul>
+          </div>
+            <% end %>
+      </div>
+
+      <div class="card-list">
+        <ul class="sticky-top">
+          <li class="title">Rayon</li>
+        </ul>
+          <% @order_products.each do |order_product|%>
+          <div class="card-details-info">
+            <ul>
+              <li><%= order_product.product.category%></li>
+            </ul>
+          </div>
+            <% end %>
+      </div>
+
+      <div class="card-list">
+        <ul class="sticky-top">
+          <li class="title">N° Rack</li>
+        </ul>
+          <% @order_products.each do |order_product|%>
+          <div class="card-details-info">
+            <ul>
+              <li><%= order_product.rack%></li>
+            </ul>
+          </div>
+            <% end %>
+      </div>
+
+      <div class="card-list">
+        <ul>
+          <li class="title"><i class="fa-solid fa-lock"></i></li>
+        </ul>
+          <% @order_products.each do |order_product|%>
+          <div class="card-details-info">
+            <ul>
+            <% unless ShopProduct.find_by(shop: @shop, product: order_product.product).nil? %>
+              <li><%= ShopProduct.find_by(shop: @shop, product: order_product.product).permanent ? "x": "-" %></li>
+              <% end %>
+            </ul>
+          </div>
+            <% end %>
+      </div>
+
+      <div class="card-list">
+        <ul class="sticky-top">
+          <li class="title">Quantité</i></li>
+        </ul>
+          <% @order_products.each do |order_product|%>
+          <div class="card-details-info">
+            <ul>
+              <li><%= OrderProduct.where(product: order_product.product).where(order_id: params[:id]).first.quantity_product%></li>
+            </ul>
+          </div>
+            <% end %>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  <%# Dans les commandes, sélectionner les produits qui ont le status "ok" et "to_remove" dans la list order_product et commander la quantité nécessaire quand stock < 5 commande entre (10-stock)%>
+  <%# envoyer en pdf et status en cours %>
