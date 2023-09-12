@@ -20,7 +20,7 @@
 
   <p class="gamme-etat">
       <% if @actualised_time == nil %>
-        <p>Pas d'actualisation récente</p>
+        <p>Pas d'actualisation récente </p>
       <% else %>
         Actualisé le : <%= @actualised_time.update_ate.day %>/0<%= @actualised_time.update_ate.month %>/<%= @actualised_time.update_ate.year %> à <%= @actualised_time.update_ate.hour %>:<%= @actualised_time.update_ate.strftime("%M") %>
       <% end %>
