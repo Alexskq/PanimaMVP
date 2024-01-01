@@ -13,5 +13,7 @@ A self-service store is a store without cashiers or cash registers. Through this
 
 # 🤝 **Contributors**
 
-- 
+- [Galmier Florissier](https://github.com/galmier27)
+- [Mathilde Bonhomme](https://github.com/Mathouzalem)
+- [Mathieu Cozian](https://github.com/Mathieu-Cozian)
 
