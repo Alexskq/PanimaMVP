@@ -10,6 +10,8 @@ A self-service store is a store without cashiers or cash registers. Through this
 - ```Ruby on Rails```
 - ```PostgreSql```
 - ```Javascript```
+- ```Redis```
+- ```Sidekiq```
 
 # 🤝 **Contributors**
 
